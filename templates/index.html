@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Ping App</title>
+    <style>
+        div.padding {
+            width: 300px;
+            padding: 50px;
+        }
+        div.padding-s {
+            width: 300px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="padding"></div>
+    <div class="container justify-content-center">
+        <h1>Well, Hello!</h1>
+        <div class="padding"></div>
+        <h2>Welcome to the Pentest-Tools coding test!</h2>
+        <div class="padding-s"></div>
+        <h4>This is a vulnerable application checks if a host responds to ping or not. Try it: 8.8.8.8</h4>
+        <div class="padding-s"></div>
+        <p>
+            Your job it to find the vulnerability as quickly as possible. 
+            After you found it, create a python application to automatically exploit it. 
+        </p>
+        <p>
+            Your application should extract as much information from the server as possible (information such as users, processes, files etc).
+        </p>
+        <p>
+            This server is created to be a little buggy, your application should not be. Try to be as resilient to errors as possible. Take care of the corner cases.
+        </p>
+        <div class="padding-s"></div>
+        <div class="padding-s"></div>
+        <form action="{{ url_for('check') }}" method="post">
+            <input type="text" name="check_alive">
+            <input type="submit">
+        </form>
+        <div class="padding-s"></div>
+
+        <div id="result">
+            {% if result %}
+                <h3>Result:</h3>
+
+                {% for line in result %}
+                    <p>{{ line }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
