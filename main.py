@@ -31,6 +31,9 @@ def check():
 
     ip = request.form["check_alive"]
 
+    if ';' in ip or '&&' in ip:
+        raise Exception("Not allowed")
+
     command = f"ping -c1 {ip}"
     result = subprocess.check_output(command, shell=True).decode("UTF-8").split("\n")
     r = make_response(render_template("index.html", result=result))
